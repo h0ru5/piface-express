@@ -16,7 +16,8 @@ app.use('/static', express.static('static'));
 app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
-  res.send('hello you knuckleheads!');
+  //should use HATEOAS here
+  res.send('basic piface service use /inputs or /outputs');
 });
 
 app.get('/inputs', function(req, res) {
