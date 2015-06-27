@@ -1,5 +1,5 @@
 {
-  "name": "restface",
+  "name": "piface-express",
   "version": "0.0.1",
   "description": "exposing piface digital via express.js",
   "main": "app.js",
@@ -8,7 +8,7 @@
     "start": "node app.js"
   },
   "author": "h0ru5 <johannes.hund@gmail.com>",
-  "license": "MIT",
+  "license": "Apache 2.0",
   "dependencies": {
     "express": "^4.12.4"
   }
