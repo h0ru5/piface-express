@@ -8,8 +8,12 @@
     "start": "node app.js"
   },
   "author": "h0ru5 <johannes.hund@gmail.com>",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "dependencies": {
-    "express": "^4.12.4"
-  }
+    "body-parser": "^1.13.1",
+    "express": "^4.12.4",
+    "primus": "^3.1.1",
+    "ws": "^0.7.2"
+  },
+  "repository": "h0ru5/piface-express"
 }
