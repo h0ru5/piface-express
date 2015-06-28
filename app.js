@@ -1,5 +1,4 @@
 var pfio = require('pfio');
-var http = require("http");
 var Primus = require("primus");
 var app = require("./express-setup");
 
