@@ -1,5 +1,7 @@
 var pfio = require('pfio');
 var express = require('express');
+var http = require("http");
+var Primus = require("primus");
 var bodyParser = require('body-parser');
 var app = express();
 
@@ -74,8 +76,23 @@ app.route('/outputs/:id')
     }
   });
 
+  var server = require('http').createServer(app);
+  var  primus = new Primus(server);
 
-var server = app.listen(3000, function() {
+var observers = [];
+
+primus.on('connection', function (spark) {
+    observers.push(spark);
+  });
+
+primus.on('disconnection', function (spark) {
+  var idx = observers.indexOf(spark);
+  if(idx !=-1) {
+    observers.splice(idx,1);
+  }
+});
+
+server.listen(3000, function() {
   var host = server.address().address;
   var port = server.address().port;
 
