@@ -6,6 +6,7 @@ var server = require('http').createServer(app);
 var primus = new Primus(server);
 
 var observers = [];
+var prev_state=0;
 
 primus.on('connection', function(spark) {
   observers.push(spark);
@@ -19,6 +20,17 @@ primus.on('disconnection', function(spark) {
 });
 
 //watch for changes and notify observers
+setInterval(function() {
+  var state = pfio.read_input();
+  if (state !== prev_state) {
+		prev_state = state;
+    var state_obj = app.register2Obj(state,true);
+    observers.forEach( function(obs) {
+       obs.write(state_obj);
+     });
+    console.log("new state  %s",JSON.stringify(state_obj) );
+	}
+},50);
 
 server.listen(3000, function() {
   var host = server.address().address;

@@ -3,7 +3,7 @@ var app = express();
 var pfio = require('pfio');
 var bodyParser = require('body-parser');
 
-var byte2bit = function(byte, flip) {
+var byte2bit = app.byte2bit = function(byte, flip) {
   var res = [];
   for (var i = 0; i < 8; i++) {
     res[i] = (byte & (1 << i)) === (1 << i);
@@ -12,7 +12,13 @@ var byte2bit = function(byte, flip) {
   return res;
 };
 
-app.byte2bit = byte2bit;
+var register2Obj= app.register2Obj = function(byte,flip) {
+  var states = byte2bit(byte, !!flip);
+  return {
+    'register': byte,
+    'state': states
+  };
+};
 
 app.use('/static', express.static('static'));
 app.use(bodyParser.json());
@@ -24,11 +30,7 @@ app.get('/', function(req, res) {
 
 app.get('/inputs', function(req, res) {
   var regbyte = pfio.read_input();
-  var states = byte2bit(regbyte, true);
-  res.json({
-    'register': regbyte,
-    'state': states
-  });
+  res.json(register2Obj(regbyte,true));
 });
 
 app.get('/inputs/:id', function(req, res) {
@@ -43,10 +45,7 @@ app.get('/inputs/:id', function(req, res) {
 app.route('/outputs')
   .get(function(req, res) {
     var regbyte = pfio.read_output();
-    res.json({
-      'register': regbyte,
-      'state': byte2bit(regbyte)
-    });
+    res.json(register2Obj(regbyte));
   })
   .put(function(req, res) {
     if (req.body.hasOwnProperty('register')) {
