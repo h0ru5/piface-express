@@ -20,7 +20,7 @@ primus.on('disconnection', function(spark) {
 });
 
 //watch for changes and notify observers
-setInterval(function() {
+var hin = setInterval(function() {
   var state = pfio.read_input();
   if (state !== prev_state) {
 		prev_state = state;
@@ -37,5 +37,8 @@ server.listen(3000, function() {
   var port = server.address().port;
   pfio.init();
   console.log('Piface app listening at http://%s:%s', host, port);
-  process.on('SIGINT', pfio.deinit);
+  process.on('SIGINT', function() {
+    clearInterval(hin);
+    pfio.deinit();  
+  });
 });
