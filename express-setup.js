@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 
 app.get('/', function(req, res) {
   //should use HATEOAS here
-  res.send('basic piface service use /inputs or /outputs');
+  res.send('basic piface service, use /inputs or /outputs');
 });
 
 app.get('/inputs', function(req, res) {
