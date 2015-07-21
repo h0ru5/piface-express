@@ -1,0 +1,21 @@
+{
+  "name": "piface-ng",
+  "version": "0.0.0",
+  "homepage": "https://github.com/h0ru5/piface-express",
+  "authors": [
+    "h0ru5 <johannes.hund@gmail.com>"
+  ],
+  "description": "web view for piface",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3"
+  }
+}

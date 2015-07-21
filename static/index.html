@@ -1,11 +1,23 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>PiFace REST interface test page</title>
 </head>
-<body>
+
+<body ng-app="piface" ng-controller="PiFaceCtrl">
   <h1>PiFace REST interface test page</h1>
-  <p>TBD</p>
+
+  <pre id="display">
+    {{data | json}}
+
+  </pre>
+
+  <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="/primus/primus.js"></script>
+  <script type="text/javascript" src="bower_components/angular-primus/angular-primus.js"></script>
+  <script type="text/javascript" src="piface.js"></script>
 </body>
+
 </html>
