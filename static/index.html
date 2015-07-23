@@ -6,8 +6,14 @@
   <title>PiFace REST interface test page</title>
 </head>
 
-<body ng-app="piface-demo" ng-controller="PiFaceCtrl">
+<body ng-app="piface-demo" ng-controller="PiFaceCtrl as pi">
   <h1>PiFace REST interface test page</h1>
+
+<p>
+  <button ng-click="randomHigh()">random</button>
+  &nbsp;
+  <button ng-click="clearOutputs()">clear</button>
+</p>
 
   <pre id="display">
     {{data | json}}
