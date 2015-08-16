@@ -9,16 +9,26 @@
 <body ng-app="piface-demo" ng-controller="PiFaceCtrl as pi">
   <h1>PiFace REST interface test page</h1>
 
-<p>
-  <button ng-click="randomHigh()">random</button>
-  &nbsp;
-  <button ng-click="clearOutputs()">clear</button>
-</p>
+  <section id="outputs">
+    <button ng-repeat="output in outputs" ng-click="output.setTo(!output.value)"> Out {{output.number}}<br/>
+    {{output.value ? "on" : "off"}}
+    </button>
+  </section>
 
-  <pre id="display">
-    {{data | json}}
+  <section id="outputs-batch">
+    <button ng-click="randomHigh()">random</button>
+    <br/>
+    <button ng-click="clearOutputs()">clear</button>
+  </section>
 
-  </pre>
+  <section id="inputs">
+    {{inputs | json}}
+  </section>
+
+  <section id="input-display">
+    <div ng-repeat="input in inputs.state track by $index" ng-show="input">Input {{$index}} is on</div>
+  </section>
+
 
   <script type="text/javascript" src="bower_components/angular/angular.js"></script>
   <script type="text/javascript" src="/primus/primus.js"></script>
