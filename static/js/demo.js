@@ -1,4 +1,4 @@
-angular.module('piface-demo', ['piface'])
+angular.module('piface-demo', ['piface','ngMaterial'])
     .controller('PiFaceCtrl', ["$scope", 'piface',
         function($scope, piface) {
             $scope.inputs = {};

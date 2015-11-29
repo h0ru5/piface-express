@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
-var pfio = require('pfio');
+var pfio = require('piface-node');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 
 var byte2bit = app.byte2bit = function(byte, flip) {
   var res = [];
@@ -22,10 +23,11 @@ var register2Obj= app.register2Obj = function(byte,flip) {
 
 app.use('/static', express.static('static'));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', function(req, res) {
   //should use HATEOAS here
-  res.send('basic piface service, use /inputs or /outputs');
+  res.send('basic piface service, use /inputs or /outputs.\nThere is a webinterface under /static');
 });
 
 app.get('/inputs', function(req, res) {
