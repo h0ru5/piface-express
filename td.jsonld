@@ -1,0 +1,125 @@
+{
+  "@context": "http://w3c.github.io/wot/w3c-wot-td-context.jsonld",
+  "interactions": [
+    {
+      "@type": "Property",
+      "name": "outputs",
+      "outputData": "xsd:unsignedByte",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "outputs/0",
+      "outputData": "xsd:boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "outputs/1",
+      "outputData": "xsd:boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "outputs/2",
+      "outputData": "xsd:boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "outputs/3",
+      "outputData": "xsd:boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "outputs/4",
+      "outputData": "xsd:boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "outputs/5",
+      "outputData": "xsd:boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "outputs/6",
+      "outputData": "xsd:boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "outputs/7",
+      "outputData": "xsd:boolean",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "name": "inputs",
+      "outputData": "xsd:unsignedByte",
+      "writable": false
+    },
+    {
+      "@type": "Property",
+      "name": "inputs/0",
+      "outputData": "xsd:boolean",
+      "writable": false
+    },
+    {
+      "@type": "Property",
+      "name": "inputs/1",
+      "outputData": "xsd:boolean",
+      "writable": false
+    },
+    {
+      "@type": "Property",
+      "name": "inputs/2",
+      "outputData": "xsd:boolean",
+      "writable": false
+    },
+    {
+      "@type": "Property",
+      "name": "inputs/3",
+      "outputData": "xsd:boolean",
+      "writable": false
+    },
+    {
+      "@type": "Property",
+      "name": "inputs/4",
+      "outputData": "xsd:boolean",
+      "writable": false
+    },
+    {
+      "@type": "Property",
+      "name": "inputs/5",
+      "outputData": "xsd:boolean",
+      "writable": false
+    },
+    {
+      "@type": "Property",
+      "name": "inputs/6",
+      "outputData": "xsd:boolean",
+      "writable": false
+    },
+    {
+      "@type": "Property",
+      "name": "inputs/7",
+      "outputData": "xsd:boolean",
+      "writable": false
+    }
+  ],
+  "metadata": {
+    "encodings": [
+      "JSON"
+    ],
+    "name": "piface",
+    "protocols": {
+      "HTTP": {
+        "priority": 1,
+        "uri": "http://raspberry:3000"
+      }
+    }
+  }
+}
