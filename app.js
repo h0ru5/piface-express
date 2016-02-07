@@ -1,4 +1,4 @@
-var pfio = require('pfio');
+var pfio = require('piface-node');
 var Primus = require("primus");
 var app = require("./express-setup");
 

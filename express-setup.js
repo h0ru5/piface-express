@@ -1,7 +1,8 @@
 var express = require('express');
 var app = express();
-var pfio = require('pfio');
+var pfio = require('piface-node');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 
 var byte2bit = app.byte2bit = function(byte, flip) {
   var res = [];
@@ -15,17 +16,18 @@ var byte2bit = app.byte2bit = function(byte, flip) {
 var register2Obj= app.register2Obj = function(byte,flip) {
   var states = byte2bit(byte, !!flip);
   return {
-    'register': byte,
+    'value': byte,
     'state': states
   };
 };
 
 app.use('/static', express.static('static'));
 app.use(bodyParser.json());
+app.use(cors());
 
 app.get('/', function(req, res) {
   //should use HATEOAS here
-  res.send('basic piface service, use /inputs or /outputs');
+  res.send('basic piface service, use /inputs or /outputs.\nThere is a webinterface under /static');
 });
 
 app.get('/inputs', function(req, res) {
@@ -48,11 +50,11 @@ app.route('/outputs')
     res.json(register2Obj(regbyte));
   })
   .put(function(req, res) {
-    if (req.body.hasOwnProperty('register')) {
-      pfio.write_output(req.body.register);
+    if (req.body.hasOwnProperty('value')) {
+      pfio.write_output(req.body.value);
       res.end();
     } else {
-      res.status(400).send("Missing key 'register' in " + JSON.stringify(req.body));
+      res.status(400).send("Missing key 'value' in " + JSON.stringify(req.body));
     }
   });
 

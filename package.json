@@ -11,9 +11,13 @@
   "license": "Apache-2.0",
   "dependencies": {
     "body-parser": "^1.13.1",
+    "cors": "^2.7.1",
     "express": "^4.12.4",
     "primus": "^3.1.1",
     "ws": "^0.7.2"
   },
-  "repository": "h0ru5/piface-express"
+  "repository": "h0ru5/piface-express",
+  "optionalDependencies": {
+    "piface-node": "git://github.com/h0ru5/piface-node.git#31975262f471e6eb726bab7458aee8de474d4c03"
+  }
 }
