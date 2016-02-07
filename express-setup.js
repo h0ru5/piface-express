@@ -16,7 +16,7 @@ var byte2bit = app.byte2bit = function(byte, flip) {
 var register2Obj= app.register2Obj = function(byte,flip) {
   var states = byte2bit(byte, !!flip);
   return {
-    'register': byte,
+    'value': byte,
     'state': states
   };
 };
@@ -50,11 +50,11 @@ app.route('/outputs')
     res.json(register2Obj(regbyte));
   })
   .put(function(req, res) {
-    if (req.body.hasOwnProperty('register')) {
-      pfio.write_output(req.body.register);
+    if (req.body.hasOwnProperty('value')) {
+      pfio.write_output(req.body.value);
       res.end();
     } else {
-      res.status(400).send("Missing key 'register' in " + JSON.stringify(req.body));
+      res.status(400).send("Missing key 'value' in " + JSON.stringify(req.body));
     }
   });
 
